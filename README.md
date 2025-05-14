@@ -2,7 +2,7 @@
 
 ## 🔄 Overview
 
-This document outlines the structure for a personal portfolio website for **Sam Schonenberg**. The site will showcase public and private projects, include a professional bio, and offer a clear way for visitors to get in touch.
+This document outlines the structure for a personal portfolio website for **Sam Schonenberg**. The site will showcase public and private projects, include a professional bio, offer a clear way for visitors to get in touch, and optionally support freelance work tracking via a lightweight database.
 
 ---
 
@@ -51,7 +51,29 @@ Each should include:
 
 ---
 
-## 📊 Visual Sitemap
+## 📈 Freelance Dashboard (optional)
+
+If used for freelancing, add a secure admin-only dashboard to track:
+
+### → `/dashboard`
+
+* Overview of active clients and projects
+
+### → `/clients`
+
+* Add/edit client contact info
+
+### → `/projects/manage`
+
+* Log hours, set rates, track status
+
+### → `/invoices`
+
+* View paid/unpaid invoices and generate downloadable PDFs
+
+---
+
+## 📂 Visual Sitemap
 
 ```
 /
@@ -62,6 +84,10 @@ Each should include:
 │   ├── Project 1 (Public)
 │   ├── Project 2 (Private)
 ├── Contact
+├── Dashboard (optional)
+│   ├── Clients
+│   ├── Projects
+│   └── Invoices
 ```
 
 ---
@@ -73,15 +99,32 @@ Each should include:
 * Use `react-router-dom` for routing
 * Create components: `<ProjectCard />`, `<ContactForm />`, etc.
 
-### Flask Backend (Minimal)
+### Flask Backend
 
-* One route for `/contact` form submission
-* Send form to `sam@schonenberg.dev`
+* Routes for:
 
-### Data Storage
+  * Contact form submission
+  * (Optional) Admin dashboard with login
+  * CRUD endpoints for freelance tracking
 
-* Store project info in a local JSON file (e.g., `projects.json`)
-* Include fields like:
+### Database (Optional for Freelancing)
+
+Start with **SQLite** or **PostgreSQL** for tracking freelance activity:
+
+**Suggested Tables:**
+
+* `clients`: name, company, email, notes
+* `projects`: client\_id, title, hourly\_rate, timeline
+* `time_logs`: project\_id, date, hours, note
+* `invoices`: project\_id, amount, sent/paid status
+
+Use SQLAlchemy for ORM and Flask-Migrate for schema changes.
+
+---
+
+## 📁 Data Structure for Projects Page
+
+Store in `projects.json`:
 
 ```json
 {
@@ -107,5 +150,5 @@ Each should include:
 ## ✉️ Contact Details
 
 * Email: `sam@schonenberg.dev`
-* LinkedIn: [LinkedIn/sams98](https://www.linkedin.com/in/sams98/)
-* GitHub: [Github/samscho98](https://github.com/samscho98)
+* LinkedIn: [sams98](https://www.linkedin.com/in/sams98/)
+* GitHub: [samscho98](https://github.com/samscho98)
