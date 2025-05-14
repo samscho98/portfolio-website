@@ -1,0 +1,63 @@
+# ========================
+# Node / React Frontend
+# ========================
+
+# dependencies
+/node_modules
+
+# production build
+/build
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+
+# editor folders
+.vscode
+.idea
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ========================
+# Python / Flask Backend
+# ========================
+
+# virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# environment settings
+.env
+*.env
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# coverage / testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# logs
+*.log
+
+# editor folders (again, for good measure)
+.vscode/
+*.swp
+
+# OS files (again)
+.DS_Store
