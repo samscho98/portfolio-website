@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Project Title",
+    "slug": "project-slug",
+    "tags": ["Tag1", "Tag2"],
+    "description": "Project description.",
+    "github": "https://github.com/username/repo",
+    "private": false,
+    "featured": true,
+    "content": ""
+  }
+]
