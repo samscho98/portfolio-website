@@ -7,6 +7,7 @@ const ProjectDetail = () => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imageError, setImageError] = useState(false);
   
   useEffect(() => {
     const fetchProject = async () => {
@@ -58,6 +59,7 @@ const ProjectDetail = () => {
             github: "https://github.com/samscho98/ai-organizer",
             private: false,
             featured: true,
+            image_url: "/images/projects/ai-file-organizer.jpg",
             content: "# AI File Organizer\n\nThis project helps developers organize their codebases for AI analysis. It automatically scans through your project directories, identifies key components, and generates a structured representation that makes it easier for AI assistants to understand your codebase.\n\n## Features\n\n- Automatic file organization\n- Code structure analysis\n- Intelligent categorization\n- Integration with Claude AI\n\n## Technical Details\n\nBuilt with Python and Flask, the application uses advanced text processing algorithms to parse and organize code files."
           },
           {
@@ -69,6 +71,7 @@ const ProjectDetail = () => {
             github: "https://github.com/samscho98/ecommerce-dashboard",
             private: false,
             featured: true,
+            image_url: "/images/projects/ecommerce-dashboard.jpg",
             content: "# E-Commerce Dashboard\n\nA comprehensive analytics solution for online retail businesses. This dashboard provides real-time insights into sales, customer behavior, and inventory management.\n\n## Features\n\n- Real-time sales tracking\n- Customer behavior analysis\n- Inventory management\n- Customizable reports\n\n## Technical Details\n\nBuilt with a React frontend, Node.js backend, and MongoDB for data storage. Uses Chart.js for data visualization."
           },
           {
@@ -80,6 +83,7 @@ const ProjectDetail = () => {
             github: "https://github.com/samscho98/portfolio-website",
             private: false,
             featured: true,
+            image_url: "/images/projects/portfolio-website.jpg",
             content: "# Portfolio Website\n\nThis project is my personal portfolio website, designed to showcase my work and skills as a developer. It features a clean, responsive design with dark mode support.\n\n## Features\n\n- Responsive Design\n- Dark Mode Support\n- Project Showcase\n- Contact Form\n\n## Technical Details\n\nThe portfolio uses React for the frontend and Flask for the backend API. The site is deployed on Render.com."
           },
           {
@@ -91,6 +95,7 @@ const ProjectDetail = () => {
             github: "https://github.com/samscho98/task-api",
             private: false,
             featured: false,
+            image_url: "/images/projects/task-api.jpg",
             content: "# Task Management API\n\nA robust RESTful API built for task management applications, providing endpoints for task creation, organization, assignment, and team collaboration.\n\n## Features\n\n- User Authentication\n- Task Management\n- Task Organization\n- Team Collaboration\n\n## Technical Details\n\nBuilt with Python Flask and PostgreSQL, this API follows RESTful principles and incorporates modern authentication practices."
           },
           {
@@ -101,6 +106,7 @@ const ProjectDetail = () => {
             description: "Custom CRM solution for a marketing agency.",
             private: true,
             featured: false,
+            image_url: "/images/projects/client-crm.jpg",
             content: "# Client CRM System\n\nA private project developed for a marketing agency to manage their client relationships, campaigns, and analytics in one place.\n\n*This is a private client project — detailed write-up available upon request.*\n\n## My Contribution\n\nI designed and implemented the full-stack solution, including:\n\n- Client database architecture\n- Campaign management tools\n- Reporting and analytics dashboard\n- Integration with existing marketing tools\n\n## Technologies Used\n\nReact, PostgreSQL, Express, and various marketing APIs for integration purposes."
           }
         ];
@@ -120,6 +126,11 @@ const ProjectDetail = () => {
     
     fetchProject();
   }, [slug]);
+  
+  // Handle image loading errors
+  const handleImageError = () => {
+    setImageError(true);
+  };
   
   if (loading) {
     return (
@@ -172,39 +183,70 @@ const ProjectDetail = () => {
         &larr; Back to Projects
       </Link>
       
-      <div className="bg-white dark:bg-dark-800 rounded-lg shadow-md p-6">
-        <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">{project.title}</h1>
-        
-        <div className="mb-4 flex flex-wrap gap-2">
-          {project.tags && project.tags.map((tag, index) => (
-            <span 
-              key={index} 
-              className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded"
+      <div className="bg-white dark:bg-dark-800 rounded-lg shadow-md overflow-hidden">
+        {/* Project image with placeholder fallback */}
+        {project.image_url && !imageError ? (
+          <div className="w-full h-64 md:h-80 overflow-hidden">
+            <img 
+              src={project.image_url} 
+              alt={project.title} 
+              className="w-full h-full object-cover"
+              onError={handleImageError}
+            />
+          </div>
+        ) : (
+          <div className="w-full h-48 md:h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <svg 
+              className="h-24 w-24 text-gray-400 dark:text-gray-500" 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
             >
-              {tag}
-            </span>
-          ))}
-        </div>
-        
-        <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{project.description}</p>
-        
-        {!project.private && project.github && (
-          <a 
-            href={project.github} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="mb-6 inline-block bg-gray-800 dark:bg-gray-900 hover:bg-gray-900 dark:hover:bg-gray-800 text-white px-4 py-2 rounded"
-          >
-            View on GitHub
-          </a>
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth="2" 
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" 
+              />
+            </svg>
+          </div>
         )}
         
-        <div className="prose dark:prose-invert max-w-none mt-6">
-          {project.content ? (
-            <ReactMarkdown>{project.content}</ReactMarkdown>
-          ) : (
-            <p className="text-gray-500 dark:text-gray-400 italic">No detailed content available for this project.</p>
+        <div className="p-6">
+          <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">{project.title}</h1>
+          
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.tags && project.tags.map((tag, index) => (
+              <span 
+                key={index} 
+                className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          
+          <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{project.description}</p>
+          
+          {!project.private && project.github && (
+            <a 
+              href={project.github} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mb-6 inline-block bg-gray-800 dark:bg-gray-900 hover:bg-gray-900 dark:hover:bg-gray-800 text-white px-4 py-2 rounded"
+            >
+              View on GitHub
+            </a>
           )}
+          
+          <div className="prose dark:prose-invert max-w-none mt-6">
+            {project.content ? (
+              <ReactMarkdown>{project.content}</ReactMarkdown>
+            ) : (
+              <p className="text-gray-500 dark:text-gray-400 italic">No detailed content available for this project.</p>
+            )}
+          </div>
         </div>
       </div>
     </div>

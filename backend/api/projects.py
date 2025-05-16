@@ -28,6 +28,7 @@ def get_projects():
                 'github': project.github,
                 'private': project.private,
                 'featured': project.featured,
+                'image_url': project.image_url,  # Add this line
                 'tags': [tag.name for tag in project.tags]
             }
             result.append(project_data)
@@ -58,6 +59,7 @@ def get_featured_projects():
                 'github': project.github,
                 'private': project.private,
                 'featured': project.featured,
+                'image_url': project.image_url,
                 'tags': [tag.name for tag in project.tags]
             }
             result.append(project_data)
@@ -93,6 +95,7 @@ def get_project_by_slug(slug):
             'private': project.private,
             'featured': project.featured,
             'content': project.content,
+            'image_url': project.image_url,
             'tags': [tag.name for tag in project.tags]
         }
         

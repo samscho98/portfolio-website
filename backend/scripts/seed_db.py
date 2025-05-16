@@ -9,6 +9,7 @@ with project and tag data.
 import json
 import os
 import sys
+from sqlalchemy import inspect
 
 # Add the parent directory to sys.path
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -70,7 +71,8 @@ def seed_projects():
                 github=project_data.get('github', ''),
                 private=project_data.get('private', False),
                 featured=project_data.get('featured', False),
-                content=project_data.get('content', '')
+                content=project_data.get('content', ''),
+                image_url=project_data.get('image_url', '')
             )
             
             # Add tags to project
@@ -92,8 +94,9 @@ def main():
     # Create and configure app
     app = create_app('development')
     with app.app_context():
-        # Check if tables exist
-        if not db.engine.dialect.has_table(db.engine, 'projects'):
+        # Check if tables exist using inspect
+        inspector = inspect(db.engine)
+        if 'projects' not in inspector.get_table_names():
             print("Error: Database tables don't exist. Please run migrations first.")
             return
 

@@ -9,7 +9,6 @@ const Navbar = () => {
   const location = useLocation();
   const { theme } = useTheme();
   
-  // Dark mode styles
   const styles = {
     nav: {
       backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white',
@@ -31,7 +30,7 @@ const Navbar = () => {
       backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white',
     },
     logo: {
-      height: '60px',
+      height: '35px',
       marginRight: '10px'
     }
   };
@@ -108,11 +107,11 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0 flex items-center" onClick={closeMenu}>
               <img 
                 src="/logo.png" 
-                alt="Sam Schonenberg Logo" 
+                alt="Schonenberg.dev Logo" 
                 style={styles.logo} 
                 className="transition-opacity duration-300"
               />
-              <span className="text-xl font-bold" style={styles.brand}>Sam Schonenberg</span>
+              <span className="text-xl font-bold" style={styles.brand}>Schonenberg.dev</span>
             </Link>
           </div>
           

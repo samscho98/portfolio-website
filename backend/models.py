@@ -29,6 +29,7 @@ class Project(db.Model):
     private = db.Column(db.Boolean, default=False)
     featured = db.Column(db.Boolean, default=False)
     content = db.Column(db.Text)
+    image_url = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
