@@ -1,0 +1,189 @@
+/* Dark mode styles */
+.dark {
+  --bg-primary: #121212;
+  --bg-secondary: #262626;
+  --bg-card: #1e1e1e;
+  --text-primary: #e6e6e6;
+  --text-secondary: #a3a3a3;
+  --primary-color: #3391ff;
+  --primary-hover: #66acff;
+  --primary-light: rgba(51, 145, 255, 0.1);
+  --border-color: #444444;
+}
+
+/* Base styles */
+.dark body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Text colors */
+.dark h1, 
+.dark h2, 
+.dark h3, 
+.dark h4, 
+.dark h5, 
+.dark h6 {
+  color: var(--text-primary);
+}
+
+.dark .text-gray-900,
+.dark .text-gray-800 {
+  color: var(--text-primary);
+}
+
+.dark .text-gray-700, 
+.dark .text-gray-600,
+.dark .text-gray-500,
+.dark .text-gray-400 {
+  color: var(--text-secondary);
+}
+
+/* Background colors */
+.dark .bg-white,
+.dark .card {
+  background-color: var(--bg-secondary);
+}
+
+.dark .bg-gray-50 {
+  background-color: var(--bg-primary);
+}
+
+.dark .bg-gray-900 {
+  background-color: #0a0a0a;
+}
+
+.dark .bg-blue-50 {
+  background-color: var(--primary-light);
+}
+
+.dark .bg-gray-200 {
+  background-color: var(--border-color);
+}
+
+.dark .bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Interactive elements */
+.dark .bg-blue-600 {
+  background-color: var(--primary-color);
+}
+
+.dark .bg-blue-600:hover {
+  background-color: var(--primary-hover);
+}
+
+.dark .text-blue-600 {
+  color: var(--primary-color);
+}
+
+.dark .text-blue-600:hover {
+  color: var(--primary-hover);
+}
+
+.dark .text-primary-600 {
+  color: var(--primary-color);
+}
+
+.dark .bg-primary-500,
+.dark .bg-primary-600 {
+  background-color: var(--primary-color);
+}
+
+.dark .bg-primary-500:hover,
+.dark .bg-primary-600:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Border colors */
+.dark .border,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: var(--border-color);
+}
+
+/* Tag styles */
+.dark .bg-blue-100 {
+  background-color: rgba(51, 145, 255, 0.2);
+}
+
+.dark .text-blue-800 {
+  color: #99c8ff;
+}
+
+.dark .bg-red-100 {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+.dark .text-red-800 {
+  color: #fca5a5;
+}
+
+.dark .bg-green-100 {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+.dark .text-green-800 {
+  color: #6ee7b7;
+}
+
+.dark .bg-purple-100 {
+  background-color: rgba(168, 85, 247, 0.2);
+}
+
+.dark .text-purple-800 {
+  color: #d8b4fe;
+}
+
+/* Fix for featured project cards */
+.dark [class*="ProjectCard_"] {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* Fix for shadows on dark mode */
+.dark .shadow-md,
+.dark .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix for the content in the header */
+.dark header h1,
+.dark .Home_hero__heading {
+  color: white;
+}
+
+/* Fix for "Let's Work Together" section */
+.dark .bg-blue-50 {
+  background-color: rgba(51, 145, 255, 0.1);
+}
+
+/* Ensure dark mode for the footer */
+.dark footer {
+  background-color: #0a0a0a;
+}
+
+/* Fix for buttons */
+.dark button,
+.dark .btn,
+.dark a[class*="Details"] {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.dark button:hover,
+.dark .btn:hover,
+.dark a[class*="Details"]:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Fix for hero text */
+.dark [class*="Home_hero"] h1 {
+  color: var(--text-primary);
+}
+
+.dark [class*="Home_hero"] p {
+  color: var(--text-secondary);
+}
